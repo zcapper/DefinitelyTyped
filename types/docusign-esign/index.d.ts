@@ -660,7 +660,7 @@ export class EnvelopePurgeConfigurationApi {
 }
 
 export class EnvelopesApi {
-    constructor(apiClient: ApiClient);
+    constructor(apiClient?: ApiClient);
 
     applyTemplate(
         accountId: string,
@@ -733,7 +733,14 @@ export class EnvelopesApi {
         callback?: () => void,
     ): Promise<EmailSettings>;
 
-    createEnvelope(accountId: string, options?: any, callback?: () => void): Promise<EnvelopeSummary>;
+    createEnvelope(accountId: string, options?: {
+        cdseMode: string;
+        changeRoutingOrder: string;
+        completedDocumentsOnly: string;
+        mergeRolesOnDraft: string;
+        tabLabelExactMatches: string;
+        envelopeDefinition: EnvelopeDefinition;
+      }, callback?: () => void): Promise<EnvelopeSummary>;
 
     createEnvelopeComments(
         accountId: string,
